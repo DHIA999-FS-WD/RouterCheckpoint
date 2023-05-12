@@ -1,48 +1,30 @@
 import React from "react";
-import "./App.css";
-// i import the structure of movieCard
-import MovieCard from "./movieComponents/MovieCards/MovieCards";
+import {Routes,Route} from 'react-router-dom'
+import MovieDetails from "./movieComponents/RouterComponents/MovieDetails";
+import Home from "./movieComponents/RouterComponents/Home";
 
-// i import the movies 's data
-import { data } from "./movieComponents/data.js";
-// i import useState (HOOKS)
-import { useEffect, useState } from "react";
-
-import FilterMovie from "./movieComponents/FilterMovie";
-
-import AddMovie from "./movieComponents/AddMovie"
-function App() {
-  const [NewData, setNewData] = useState(data);
-  const [filteredData, setFilteredData] = useState(NewData);
-
+import { data } from "./movieComponents/data";
 
   
   
   
-  // console.log(NewData);
+ function App() {
+  
+
   return (
-    <div className="movieApp">
-      <FilterMovie  newData={NewData} setNewData ={setNewData} setFilteredData={setFilteredData} />
-      <div className="body">
-        {/* i use map methode to render the filtred movies  */}
-        {filteredData.map((e) => (
-          <MovieCard
-            key={e.title}
-            title={e.title}
-            dsc={e.description}
-            url={e.posterURL}
-            rat={e.rating}
-          />
-        ))}
-      </div>
-      <AddMovie newData={NewData} setNewData ={setNewData}/>
-    </div>
+    <>
+      <Routes>
+        <Route path="/" element={<Home/>}/>
+        
+        <Route path="/MovieDetails" element={<MovieDetails data={data} />} />
+        <Route path="/*" element={<div>404 .... NOT FOUND</div>} />
+      </Routes>
+    </>
   );
-}
+ }
+
 
 export default App;
-
-
 
 
 

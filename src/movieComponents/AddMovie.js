@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import "../App.css";
+import "./RouterComponents/Home.css";
 
 function AddMovie({newData,setNewData}){
     const [posterURL, setfposterURL] = useState("");
