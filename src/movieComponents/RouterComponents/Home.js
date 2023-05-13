@@ -7,49 +7,33 @@ import MovieCard from "../MovieCards/MovieCards";
 import { data } from "../data";
 // i import useState (HOOKS)
 import { useEffect, useState } from "react";
-
 import FilterMovie from "../FilterMovie";
+import AddMovie from "../AddMovie";
 
-import AddMovie from "../AddMovie"
-
-function Home() {
-  const [NewData, setNewData] = useState(data);
-  const [filteredData, setFilteredData] = useState(NewData);
-
-  
-  
-  
+function Home({ NewData, setNewData, filteredData, setFilteredData }) {
   // console.log(NewData);
   return (
     <div className="movieApp">
-      <FilterMovie  newData={NewData} setNewData ={setNewData} setFilteredData={setFilteredData} />
+      <FilterMovie
+        newData={NewData}
+        setNewData={setNewData}
+        setFilteredData={setFilteredData}
+      />
       <div className="body">
         {/* i use map methode to render the filtred movies  */}
         {filteredData.map((e) => (
-        
-        <MovieCard
+          <MovieCard
             key={e.title}
             title={e.title}
             dsc={e.description}
             url={e.posterURL}
             rat={e.rating}
           />
-        
-          
         ))}
       </div>
-      <AddMovie newData={NewData} setNewData ={setNewData}/>
+      <AddMovie newData={NewData} setNewData={setNewData} />
     </div>
   );
 }
 
 export default Home;
-
-
-
-
-
-
-
-
-
